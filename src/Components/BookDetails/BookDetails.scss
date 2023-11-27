@@ -1,0 +1,127 @@
+$primary-color: #e50914;
+$secondary-color: #221f1f;
+$accent-color: #f5f5f1;
+
+@use "../../styles/mixins" as *;
+
+.book-details-container {
+  display: flex;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+.book-details-left,
+.book-details-right,
+.book-reviews {
+  flex: 1;
+  margin: 10px;
+}
+
+.book-reviews {
+  padding: 0 20px;
+}
+
+.book-thumbnail {
+  width: 100%;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.book-details {
+  h3.booklist__title {
+    color: white;
+    margin-block-start: 0;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 16px;
+    &.booklist__author {
+      color: #757575;
+    }
+    &.booklist__rating {
+      color: white;
+    }
+    &.booklist__release-date {
+      color: #757575;
+    }
+  }
+}
+
+.book_reviews {
+  list-style: none;
+  padding: 0;
+
+  li.book_reviews__item {
+    border-bottom: 1px solid #757575;
+    padding: 10px 0;
+    background-color: $accent-color;
+    border-radius: 8px;
+    padding-left: 8px;
+    margin-bottom: 0.5rem;
+
+    p.book_reviews__review {
+      color: black;
+      font-style: italic;
+      margin-block-start: 0;
+      margin-block-end: 0.5rem;
+    }
+  }
+
+  &-user {
+    color: $secondary-color;
+    font-size: 11px;
+    font-style: italic;
+  }
+}
+
+.stars {
+  height: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  &__input {
+    padding-left: 6px;
+    margin-bottom: 1rem;
+    height: 3rem;
+    border-radius: 6px;
+    border: none;
+    @include tablet {
+      width: 70%;
+    }
+  }
+
+  &__btn {
+    height: 1.8rem;
+    width: 40%;
+    position: relative;
+    left: 60%;
+    background-color: #e50914;
+    border: 3px solid #c01d24;
+    color: $accent-color;
+    border-radius: 4px;
+    @include tablet {
+      margin-block-end: 1.2rem;
+      font-size: 16px;
+      font-weight: 600;
+      width: 20%;
+      border-radius: 8px;
+      left: unset;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}

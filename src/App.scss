@@ -1,3 +1,5 @@
+@use "./styles/fonts" as *;
+
 body {
-  margin: 0;
+  font-family: "Avenir";
 }
