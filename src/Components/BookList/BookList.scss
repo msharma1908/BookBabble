@@ -1,0 +1,40 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header {
+  color: #e50914;
+  font-size: 2em;
+  margin-bottom: 1em;
+  padding-left: 2.5rem;
+}
+
+.booklist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+}
+
+.booklist__item {
+  background-color: #141414;
+  border: 1px solid #303030;
+  border-radius: 5px;
+  margin: 1em;
+  padding: 1em;
+  width: 200px;
+}
+
+.booklist__image {
+  width: 100%;
+  height: auto;
+}
+
+.booklist__span {
+  display: block;
+  margin-top: 0.5em;
+  color: #fff;
+}
