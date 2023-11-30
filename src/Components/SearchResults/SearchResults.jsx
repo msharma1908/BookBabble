@@ -29,7 +29,6 @@ const SearchResults = (props) => {
           return (
             <li className="booklist__item" key={index}>
               <Link to={`/details-and-reviews/${book.id}`}>
-                {book.title}
                 <img
                   className="booklist__image"
                   src={book.thumbnail}

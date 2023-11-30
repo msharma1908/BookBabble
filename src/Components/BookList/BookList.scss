@@ -1,13 +1,20 @@
+@use "../../styles/mixins" as *;
+
 body {
   background-color: #000;
   color: #fff;
+  margin: 0;
 }
 
 .header {
-  color: #e50914;
+  color: white;
   font-size: 2em;
   margin-bottom: 1em;
   padding-left: 2.5rem;
+  background-color: #141414;
+  border: 1px solid #303030;
+  border-radius: 5px;
+  padding-top: 6px;
 }
 
 .booklist {

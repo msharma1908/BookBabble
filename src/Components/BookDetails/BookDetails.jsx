@@ -6,6 +6,7 @@ import fourStar from "../../Assets/Icons/4star.png";
 function BookDetails(props) {
   const [bookReviews, setBookReviews] = useState([]);
   const [bookDetails, setBookDetails] = useState([]);
+  const [reviewText, setReviewText] = useState("");
   const title = props.title;
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -25,6 +26,24 @@ function BookDetails(props) {
     };
     fetchData();
   }, [title]);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${baseUrl}/details-and-reviews/${title}`,
+        { review: reviewText }
+      );
+
+      if (response.status === 201) {
+        setBookReviews([...bookReviews, { review: reviewText }]);
+        setReviewText("");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -68,67 +87,23 @@ function BookDetails(props) {
               </li>
             ))}
           </ul>
-          <div className="form">
+          <form onSubmit={handleFormSubmit} className="form">
             <input
               className="form__input"
               type="text"
               placeholder="Write a review..."
               name="review"
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
             ></input>
             <button className="form__btn" type="submit">
               Add a Review
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </>
   );
-  //     <div className="book-details-container">
-  //       <div className="book-details-left">
-  //         <div className="book-thumbnail">
-  //           <ul className="book-details-container">
-  //             {bookDetails.map((book, index) => {
-  //               return (
-  //                 <li className="book-details-left" key={index}>
-  //                   <div>
-  //                     <div>
-  //                       <img
-  //                         className="book-thumbnail"
-  //                         src={book.thumbnail}
-  //                         alt={book.title}
-  //                       />
-  //                     </div>
-  //                     <div>
-  //                       <h3 className="booklist__title">{book.title}</h3>
-  //                       <p className="booklist__author">{book.author}</p>
-  //                       <p className="booklist__rating">{book.rating}</p>
-  //                       <p className="booklist__release-date">
-  //                         {book.releaseDate}
-  //                       </p>
-  //                     </div>
-  //                   </div>
-  //                 </li>
-  //               );
-  //             })}
-  //           </ul>
-  //         </div>
-
-  //         <div className="book-info">
-  //           <ul className="book_reviews">
-  //             {bookReviews.map((book, index) => {
-  //               return (
-  //                 <li className="book_reviews__item" key={index}>
-  //                   <div>
-  //                     <p className="book_reviews__review">{book.review}</p>
-  //                   </div>
-  //                 </li>
-  //               );
-  //             })}
-  //           </ul>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
 }
 
 export default BookDetails;
