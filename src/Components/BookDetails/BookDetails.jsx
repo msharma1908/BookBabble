@@ -95,6 +95,7 @@ function BookDetails(props) {
               name="review"
               value={reviewText}
               onChange={(e) => setReviewText(e.target.value)}
+              required
             ></input>
             <button className="form__btn" type="submit">
               Add a Review
